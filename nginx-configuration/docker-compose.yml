@@ -1,0 +1,26 @@
+version: "3"
+services:
+  laravel-back:
+    build:
+      context: /home/aslan/REACT_LARAVEL_NGINX/laravel-realworld-example-app
+      dockerfile: Dockerfile
+    image: laravel_image
+    container_name: laravel-back
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nginx:alpine
+    container_name: nginx_app
+    ports:
+      - 80:80
+    volumes:
+      - /etc/var/log:/var/log/nginx
+  react-front:
+    build:
+      context: /home/aslan/REACT_LARAVEL_NGINX/realworld-example
+      dockerfile: Dockerfile
+    image: react-front
+    container_name: react_app
+     
+    
